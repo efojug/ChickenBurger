@@ -1,0 +1,22 @@
+{
+  "_fv": 6,
+  "_type": "fluid",
+  "definition": {
+    "name": "Dream",
+    "textureStill": "dream",
+    "textureFlowing": "dream",
+    "luminosity": 0,
+    "density": -1,
+    "viscosity": 0,
+    "isGas": false,
+    "type": "WATER",
+    "generateBucket": true,
+    "creativeTab": {
+      "value": "CUSTOM:BurgerCteativeTab"
+    },
+    "spawnWorldTypes": [],
+    "onEntityCollides": {
+      "name": "DreamMobplayerCollidesBlock"
+    }
+  }
+}

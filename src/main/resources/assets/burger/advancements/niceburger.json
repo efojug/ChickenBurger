@@ -1,0 +1,31 @@
+{
+  "display": {
+    "background": "minecraft:textures/blocks/stone.png",
+    "icon": {
+      "item": "burger:chickenburger"
+    },
+    "title": {
+      "translate": "advancements.niceburger.title"
+    },
+    "description": {
+      "translate": "advancements.niceburger.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "niceburger": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "burger:chickenburger"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "experience": 20
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "_fv": 6,
+  "_type": "potion",
+  "definition": {
+    "name": "±¥",
+    "effectName": "Nice",
+    "icon": "hamburger.png",
+    "color": {
+      "value": -16711681,
+      "falpha": 0.0
+    },
+    "isInstant": false,
+    "isBad": false,
+    "isBenefitical": true,
+    "registerPotionType": false,
+    "curativeItems": [],
+    "renderStatusInInventory": true,
+    "renderStatusInHUD": true
+  }
+}

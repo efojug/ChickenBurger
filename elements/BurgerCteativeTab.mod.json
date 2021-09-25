@@ -1,0 +1,11 @@
+{
+  "_fv": 6,
+  "_type": "tab",
+  "definition": {
+    "name": "Burger Cteative Tab",
+    "icon": {
+      "value": "CUSTOM:ChickenBurger"
+    },
+    "showSearch": false
+  }
+}

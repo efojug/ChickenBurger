@@ -1,0 +1,45 @@
+{
+  "_fv": 6,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "xpReward": 0.0,
+    "recipeRetstackSize": 1,
+    "group": "",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "Items.BREAD"
+      },
+      {
+        "value": "Items.BREAD"
+      },
+      {
+        "value": "Items.BREAD"
+      },
+      {
+        "value": "Items.COOKED_CHICKEN"
+      },
+      {
+        "value": "Items.COOKED_CHICKEN"
+      },
+      {
+        "value": "Items.COOKED_CHICKEN"
+      },
+      {
+        "value": "Items.BREAD"
+      },
+      {
+        "value": "Items.BREAD"
+      },
+      {
+        "value": "Items.BREAD"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:ChickenBurger"
+    },
+    "name": "burger",
+    "namespace": "mod"
+  }
+}

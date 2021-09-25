@@ -1,0 +1,148 @@
+buildscript {
+	repositories {
+		jcenter()
+		mavenCentral()
+		maven {
+			name = 'SpongePowered'
+			url = 'https://repo.spongepowered.org/repository/maven-public/'
+		}
+		maven {
+			name = 'forge'
+			url = 'http://lss233.littleservice.cn/repositories/minecraft'
+		}
+	}
+	dependencies {
+		classpath 'net.minecraftforge.gradle:ForgeGradle:3.+'
+		classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'org.spongepowered.mixin'
+
+version project.modVersion
+group project.modGroup
+
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
+
+
+minecraft {
+	mappings channel: 'stable', version: '39-1.12'
+
+	accessTransformer = file('src/main/resources/burger_at.cfg')
+
+	runs {
+		client {
+			workingDirectory project.file('run')
+
+			property 'fml.coreMods.load', 'net.mcreator.burger.mixin.MixinLoader'
+			property 'mixin.env.disableRefMap', 'true'
+
+			property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+			property 'forge.logging.console.level', 'debug'
+		}
+	}
+}
+
+repositories {
+	maven {
+		name = 'spongepowered-repo'
+		url = 'https://repo.spongepowered.org/repository/maven-public/'
+	}
+	maven {
+		name = 'impactdevelopment-repo'
+		url = 'https://impactdevelopment.github.io/maven/'
+	}
+	maven {
+		name = 'swt-repo'
+		url = "https://maven-eclipse.github.io/maven"
+	}
+	maven {
+		name = 'jitpack.io'
+		url = "https://jitpack.io"
+	}
+}
+
+configurations {
+	jarLibs
+}
+
+dependencies {
+	minecraft "net.minecraftforge:forge:$project.forgeVersion"
+
+	jarLibs('org.spongepowered:mixin:0.7.4-SNAPSHOT') {
+		exclude module: 'launchwrapper'
+		exclude module: 'guava'
+		exclude module: 'gson'
+		exclude module: 'commons-io'
+	}
+	// Hacky way to get mixin work
+	annotationProcessor('org.spongepowered:mixin:0.8.2:processor') {
+		exclude module: 'gson'
+	}
+
+	jarLibs("org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version") {
+		exclude module: 'kotlin-stdlib-common'
+		exclude module: 'annotations'
+	}
+
+	jarLibs("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version") {
+		exclude module: 'kotlin-stdlib-common'
+		exclude module: 'annotations'
+	}
+
+	jarLibs 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1'
+
+//    jarLibs 'com.google.code.gson:gson:2.8.7'
+	compileOnly "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version"
+
+	implementation configurations.jarLibs
+}
+
+processResources {
+	inputs.property 'version', project.version
+	inputs.property 'mcversion', project.forgeVersion
+
+	from(sourceSets.main.resources.srcDirs) {
+		include 'mcmod.info'
+		expand 'version': project.version, 'mcversion': project.forgeVersion
+	}
+
+	from(sourceSets.main.resources.srcDirs) {
+		exclude 'mcmod.info'
+	}
+
+	rename '(.+_at.cfg)', 'META-INF/$1'
+	exclude('LICENSE.txt')
+}
+mixin {
+	defaultObfuscationEnv 'searge'
+	add sourceSets.main, 'mixins.burger.refmap.json'
+}
+
+tasks.withType(JavaCompile) {
+	options.encoding = "UTF-8"
+}
+
+jar {
+	manifest {
+		attributes(
+				'MixinConfigs': 'mixins.burger.json',
+				'tweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
+				'TweakOrder': 0,
+				'FMLCorePluginContainsFMLMod': 'true',
+				'FMLCorePlugin': 'net.mcreator.burger.mixin.MixinLoader',
+				'ForceLoadAsMod': 'true',
+				'FMLAT': 'burger_at.cfg'
+		)
+	}
+	from {
+		configurations.jarLibs.collect {
+			it.isDirectory() ? it : zipTree(it)
+		}
+	}
+}

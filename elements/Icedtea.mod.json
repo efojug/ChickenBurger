@@ -1,0 +1,21 @@
+{
+  "_fv": 6,
+  "_type": "food",
+  "definition": {
+    "renderType": 0,
+    "texture": "iced_tea",
+    "customModelName": "Normal",
+    "name": "Icedtea",
+    "creativeTab": {
+      "value": "CUSTOM:BurgerCteativeTab"
+    },
+    "stackSize": 64,
+    "nutritionalValue": 4,
+    "saturation": 2.0,
+    "eatingSpeed": 24,
+    "forDogs": false,
+    "isAlwaysEdible": false,
+    "animation": "drink",
+    "hasGlow": false
+  }
+}
