@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "package": "net.mcreator.burger.mixin.mixins",
+  "refmap": "mixins.burger.refmap.json",
+  "mixins": [
+    "MixinMinecraft"
+  ]
+}

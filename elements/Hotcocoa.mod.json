@@ -1,0 +1,21 @@
+{
+  "_fv": 6,
+  "_type": "food",
+  "definition": {
+    "renderType": 0,
+    "texture": "hot_cocoa",
+    "customModelName": "Normal",
+    "name": "Hotcocoa",
+    "creativeTab": {
+      "value": "CUSTOM:BurgerCteativeTab"
+    },
+    "stackSize": 64,
+    "nutritionalValue": 4,
+    "saturation": 1.0,
+    "eatingSpeed": 24,
+    "forDogs": false,
+    "isAlwaysEdible": false,
+    "animation": "drink",
+    "hasGlow": false
+  }
+}

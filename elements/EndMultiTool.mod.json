@@ -1,0 +1,32 @@
+{
+  "_fv": 6,
+  "_type": "tool",
+  "definition": {
+    "renderType": 0,
+    "texture": "multitool",
+    "customModelName": "Normal",
+    "name": "End MultiTool",
+    "creativeTab": {
+      "value": "CUSTOM:BurgerCteativeTab"
+    },
+    "toolType": "MultiTool",
+    "harvestLevel": 128000,
+    "efficiency": 128000.0,
+    "attackSpeed": 100.0,
+    "enchantability": 128000,
+    "damageVsEntity": 128000.0,
+    "usageCount": 0,
+    "blocksAffected": [],
+    "hasGlow": false,
+    "repairItems": [],
+    "onRightClickedOnBlock": {
+      "name": "EndMultiToolRightClickedOnBlock"
+    },
+    "onEntityHitWith": {
+      "name": "EndMultiToolMobIsHitWithTool"
+    },
+    "onItemInInventoryTick": {
+      "name": "EndMultiToolToolInInventoryTick"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "_fv": 6,
+  "_type": "food",
+  "definition": {
+    "renderType": 0,
+    "texture": "watermelon_icle",
+    "customModelName": "Normal",
+    "name": "Watermelonicle",
+    "creativeTab": {
+      "value": "CUSTOM:BurgerCteativeTab"
+    },
+    "stackSize": 64,
+    "nutritionalValue": 64,
+    "saturation": 1.0,
+    "eatingSpeed": 24,
+    "forDogs": false,
+    "isAlwaysEdible": false,
+    "animation": "eat",
+    "hasGlow": false
+  }
+}

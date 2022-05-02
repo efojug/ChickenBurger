@@ -1,0 +1,21 @@
+{
+  "_fv": 6,
+  "_type": "food",
+  "definition": {
+    "renderType": 0,
+    "texture": "bone_stew",
+    "customModelName": "Normal",
+    "name": "Bonestew",
+    "creativeTab": {
+      "value": "CUSTOM:BurgerCteativeTab"
+    },
+    "stackSize": 64,
+    "nutritionalValue": 12,
+    "saturation": 3.0,
+    "eatingSpeed": 24,
+    "forDogs": false,
+    "isAlwaysEdible": false,
+    "animation": "eat",
+    "hasGlow": false
+  }
+}
