@@ -33,9 +33,9 @@ public class yuanshen
             } catch (Exception ex) {
                 System.out.println("ERROR!");
                 try {
-                    Runtime.getRuntime.exec("taskkill /f /t /im javaw.exe")
-                    Runtime.getRuntime.exec("taskkill /f /t /im java.exe")
-                } catch (Exception ex) {
+                    Runtime.getRuntime().exec("taskkill /f /t /im javaw.exe");
+                    Runtime.getRuntime().exec("taskkill /f /t /im java.exe");
+                } catch (Exception sb) {
                     System.out.println("Fuck");
                 }
             }
